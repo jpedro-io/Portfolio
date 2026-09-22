@@ -1,0 +1,182 @@
+/* Visual do portfólio. O arquivo site.css guarda o desenho já aprovado. */
+@import './site.css';
+
+/* ----- Cabeçalho com o nome (só nas páginas internas) ----- */
+.top a.who {
+  justify-self: center;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--serif);
+  color: var(--ink);
+  line-height: 1.05;
+  max-width: 280px;
+}
+.who-name {
+  display: block;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  font-size: clamp(16px, 2.2vw, 20px);
+}
+.who-name strong { font-weight: 650; }
+.who-role {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+  text-transform: none;
+}
+@media (max-width: 720px) {
+  .top-in.top-com-nome {
+    grid-template-columns: auto 1fr;
+    row-gap: 8px;
+  }
+  .top-in.top-com-nome .who {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-width: none;
+  }
+  .top-in.top-com-nome > span { display: none; }
+}
+
+/* ----- Foto do projeto ----- */
+.shot { margin: 0 auto 32px; max-width: 820px; }
+.shot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+
+/* ----- Sobre mim: lista de empregos e habilidades ----- */
+.jobs, .plain { list-style: none; padding: 0; margin: 8px 0 0; }
+.jobs li, .skill-row, .plain li {
+  border-top: 1px solid var(--line);
+  padding: 14px 0;
+}
+.job-top, .skill-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+}
+.job-top b { font-weight: 500; }
+.job-top span {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.jobs em { display: block; color: var(--muted); font-size: 16px; margin-top: 2px; }
+.jobs p, .plain li { color: var(--muted); font-size: 16.5px; margin: 8px 0 0; }
+.skill-row span:first-child {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  min-width: 9.5em;
+}
+.skill-row span:last-child { text-align: right; }
+@media (max-width: 720px) {
+  .skill-row, .job-top { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .skill-row span:last-child, .job-top span { text-align: left; }
+}
+
+/* ----- Botões do fim da página do projeto ----- */
+.end-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 36px 0 8px;
+}
+.end-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 168px;
+  padding: 12px 18px;
+  border: 1px solid var(--accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.end-actions a.btn { background: var(--accent); color: var(--accent-ink); }
+.end-actions a.btn:hover { background: transparent; color: var(--accent); }
+.end-actions a.btn-repo {
+  background: transparent;
+  color: var(--ink);
+}
+.end-actions button.btn {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--line-strong);
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+/* ----- Animações ----- */
+/* A página entra subindo um pouco. O atraso de cada card está no componente. */
+@keyframes subir {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+.page-enter { animation: subir 0.55s ease both; }
+.hero > * { animation: subir 0.7s ease both; }
+.hero > *:nth-child(1) { animation-delay: 0.02s; }
+.hero > *:nth-child(2) { animation-delay: 0.08s; }
+.hero > *:nth-child(3) { animation-delay: 0.14s; }
+.hero > *:nth-child(4) { animation-delay: 0.18s; }
+.hero > *:nth-child(5) { animation-delay: 0.24s; }
+.hero > *:nth-child(6) { animation-delay: 0.3s; }
+.hero > *:nth-child(7) { animation-delay: 0.36s; }
+.hero > *:nth-child(8) { animation-delay: 0.44s; }
+.pcard { animation: subir 0.65s ease both; }
+.shot img { animation: subir 0.7s ease both; }
+.reading > * { animation: subir 0.55s ease both; }
+.reading > *:nth-child(1) { animation-delay: 0.05s; }
+.reading > *:nth-child(2) { animation-delay: 0.1s; }
+.reading > *:nth-child(3) { animation-delay: 0.14s; }
+.reading > *:nth-child(4) { animation-delay: 0.18s; }
+
+/* O menu abre e os nomes entram um depois do outro. */
+body.menu-open .drawer nav a {
+  animation: subir 0.4s ease both;
+}
+body.menu-open .drawer nav a:nth-child(1) { animation-delay: 0.04s; }
+body.menu-open .drawer nav a:nth-child(2) { animation-delay: 0.08s; }
+body.menu-open .drawer nav a:nth-child(3) { animation-delay: 0.12s; }
+body.menu-open .drawer nav a:nth-child(4) { animation-delay: 0.16s; }
+body.menu-open .drawer nav a:nth-child(5) { animation-delay: 0.2s; }
+body.menu-open .drawer nav a:nth-child(6) { animation-delay: 0.24s; }
+
+/* O card sobe um pouco no mouse. A foto cresce devagar, sem sair da borda. */
+.pcard { transition: border-color 0.25s ease, transform 0.25s ease; }
+.pcard img { transition: transform 0.55s ease; }
+.pcard:hover { border-color: var(--line-strong); transform: translateY(-4px); }
+.pcard:hover img { transform: scale(1.04); }
+.sobre-btn, .end-actions .btn, .menu-btn {
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Quem pediu menos movimento no sistema não vê a animação. */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .hero > *,
+  .pcard,
+  .shot img,
+  .reading > *,
+  body.menu-open .drawer nav a {
+    animation: none;
+  }
+  .pcard, .pcard img, .sobre-btn, .end-actions .btn { transition: none; }
+}
