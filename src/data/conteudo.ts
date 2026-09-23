@@ -11,7 +11,7 @@ export const contato = {
   whatsapp: 'https://wa.me/5533998478236',
   github: 'https://github.com/jpedro-io',
   githubRotulo: 'github.com/jpedro-io',
-  linkedin: 'https://www.linkedin.com/in/jo%C3%A3o-pedro-c-rocha-98ab7b3b5/',
+  linkedin: 'www.linkedin.com/in/joão-pedro-c-rocha-98ab7b3b5',
 } as const
 
 /** Um parágrafo de um projeto. `destaque` vira o negrito do começo da frase. */
