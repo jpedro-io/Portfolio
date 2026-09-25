@@ -14,7 +14,7 @@ export function Inicio() {
         <br />
         Campos Rocha
       </h1>
-      <p className="role">Desenvolvedor web júnior / estágio</p>
+      <p className="role">Desenvolvimento Web (Full Stack/Front-End/Back-End), Suporte Técnico N1/N2 ou Operações de TI.</p>
       <hr className="rule letter" />
       <p className="line">Código no lugar. Suporte que entrega.</p>
       <p className="bio">
