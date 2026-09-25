@@ -299,7 +299,7 @@ export type Experiencia = {
 export const sobre = {
   local: 'Divisa Alegre, MG · IFBA, Campus Vitória da Conquista · 3º semestre',
   resumo:
-    'Estudante do 3º semestre de Sistemas de Informação no IFBA. Três anos de suporte técnico, manutenção de hardware e software e gestão de negócio próprio. Base em Java, Python, HTML, CSS e JavaScript, com atendimento ao público e resolução de problema sob autonomia. Busco estágio remoto em suporte técnico e desenvolvimento web.',
+    'Estudante do 3º semestre de Sistemas de Informação (IFBA), com 3+ anos de experiência prática em suporte técnico, manutenção de hardware/software e gestão de projetos. Possui base em desenvolvimento Web Full Stack (Java, Python, JavaScript, TypeScript, HTML/CSS) e histórico comprovado em resolução de problemas e atendimento ao cliente. Busca oportunidades de Estágio ou nível Júnior  nas áreas de Desenvolvimento Web (Full Stack/Front-End/Back-End), Suporte Técnico N1/N2 ou Operações de TI.',
   experiencias: [
     {
       cargo: 'Fundador e prestador de serviços técnicos',
