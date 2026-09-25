@@ -300,6 +300,27 @@ export const sobre = {
   local: 'Divisa Alegre, MG · IFBA, Campus Vitória da Conquista · 3º semestre',
   resumo:
     'Estudante do 3º semestre de Sistemas de Informação (IFBA), com 3+ anos de experiência prática em suporte técnico, manutenção de hardware/software e gestão de projetos. Possui base em desenvolvimento Web Full Stack (Java, Python, JavaScript, TypeScript, HTML/CSS) e histórico comprovado em resolução de problemas e atendimento ao cliente. Busca oportunidades de Estágio ou nível Júnior  nas áreas de Desenvolvimento Web (Full Stack/Front-End/Back-End), Suporte Técnico N1/N2 ou Operações de TI.',
+  
+  formacao: [
+    {
+      curso: 'Bacharelado em Sistemas de Informação',
+      estado: 'em curso',
+      lugar: 'Instituto Federal da Bahia · 3º semestre',
+    },
+    {
+      curso: 'Ensino médio',
+      estado: 'concluído',
+      lugar: 'Escola Estadual de Divisa Alegre',
+    },
+  ],
+
+   habilidades: [
+    ['Linguagens', 'Java, Python, HTML5, CSS3, JavaScript, TypeScript'],
+    ['Suporte', 'Hardware, suporte N1, diagnóstico, redes básico'],
+    ['Ferramentas', 'Excel, Word e PowerPoint avançados, Git/GitHub'],
+    ['Competências', 'Comunicação assertiva, equipe, autonomia, aprendizagem rápida, resiliência'],
+  ] as const,
+  
   experiencias: [
     {
       cargo: 'Fundador e prestador de serviços técnicos',
@@ -326,24 +347,6 @@ export const sobre = {
       texto: 'Rotina administrativa em clínica de alto volume. Dez a vinte pacientes por dia: triagem, agendamento e suporte direto.',
     },
   ] satisfies Experiencia[],
-  formacao: [
-    {
-      curso: 'Bacharelado em Sistemas de Informação',
-      estado: 'em curso',
-      lugar: 'Instituto Federal da Bahia · 3º semestre',
-    },
-    {
-      curso: 'Ensino médio',
-      estado: 'concluído',
-      lugar: 'Escola Estadual de Divisa Alegre',
-    },
-  ],
-  habilidades: [
-    ['Linguagens', 'Java, Python, HTML5, CSS3, JavaScript, TypeScript'],
-    ['Suporte', 'Hardware, suporte N1, diagnóstico, redes básico'],
-    ['Ferramentas', 'Excel, Word e PowerPoint avançados, Git/GitHub'],
-    ['Competências', 'Comunicação assertiva, equipe, autonomia, aprendizagem rápida, resiliência'],
-  ] as const,
   
   idiomas: 'Português, nativo. Inglês intermediário: leitura técnica e conversação básica.',
 }
