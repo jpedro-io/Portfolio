@@ -19,8 +19,8 @@ export function Inicio() {
       <p className="line">Código no lugar. Suporte que entrega.</p>
       <p className="bio">
         Estudante do 3º semestre de Sistemas de Informação no IFBA. Três anos de
-        suporte, manutenção e gestão do próprio negócio. Busco estágio remoto em
-        suporte técnico e desenvolvimento web.
+        suporte, manutenção e gestão do próprio negócio. Busco oportunidades de Estágio 
+        ou nível Júnior nas áreas de Desenvolvimento Web (Full Stack/Front-End/Back-End), Suporte Técnico N1/N2 ou Operações de TI.
       </p>
 
       <div className="contacts">
