@@ -17,20 +17,6 @@ export function Sobre() {
         <h3>Resumo</h3>
         <p>{sobre.resumo}</p>
 
-        <h3>Experiência</h3>
-        <ul className="jobs">
-          {sobre.experiencias.map((item) => (
-            <li key={item.cargo}>
-              <div className="job-top">
-                <b>{item.cargo}</b>
-                <span>{item.periodo}</span>
-              </div>
-              <em>{item.lugar}</em>
-              <p>{item.texto}</p>
-            </li>
-          ))}
-        </ul>
-
         <h3>Formação</h3>
         <ul className="jobs">
           {sobre.formacao.map((item) => (
@@ -51,6 +37,20 @@ export function Sobre() {
             <span>{valor}</span>
           </div>
         ))}
+
+        <h3>Experiência</h3>
+        <ul className="jobs">
+          {sobre.experiencias.map((item) => (
+            <li key={item.cargo}>
+              <div className="job-top">
+                <b>{item.cargo}</b>
+                <span>{item.periodo}</span>
+              </div>
+              <em>{item.lugar}</em>
+              <p>{item.texto}</p>
+            </li>
+          ))}
+        </ul>
 
         <h3>Idiomas</h3>
         <p>{sobre.idiomas}</p>
