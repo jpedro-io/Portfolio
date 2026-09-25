@@ -319,7 +319,7 @@ export const sobre = {
     ['Suporte', 'Hardware, suporte N1, diagnóstico, redes básico'],
     ['Ferramentas', 'Excel, Word e PowerPoint avançados, Git/GitHub'],
     ['Competências', 'Comunicação assertiva, equipe, autonomia, aprendizagem rápida, resiliência'],
-  ] as const,
+  ],
   
   experiencias: [
     {
