@@ -8,6 +8,7 @@ import { contato, projetos } from '../data/conteudo.ts'
 export function Inicio() {
   return (
     <section className="hero" id="inicio">
+       <header className="ed-head">
       <p className="kicker">Divisa Alegre, MG · IFBA · 3º semestre</p>
       <h1>
         João Pedro
