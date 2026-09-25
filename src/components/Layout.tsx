@@ -13,9 +13,6 @@ export function Layout() {
   const gavetaId = useId()
   const { pathname } = useLocation()
 
-  // A capa não mostra o cabeçalho com o nome. As outras páginas mostram.
-  const mostrarNome = pathname !== '/'
-
   // Fecha o menu ao trocar de página, para a gaveta não ficar aberta por cima do texto.
   useEffect(() => {
     setAberto(false)
