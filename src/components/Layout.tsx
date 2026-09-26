@@ -13,6 +13,9 @@ export function Layout() {
   const gavetaId = useId()
   const { pathname } = useLocation()
 
+  // Define que o nome só aparece se NÃO estiver na página inicial ('/')
+  const mostrarNome = pathname !== '/'
+
   // Fecha o menu ao trocar de página, para a gaveta não ficar aberta por cima do texto.
   useEffect(() => {
     setAberto(false)
