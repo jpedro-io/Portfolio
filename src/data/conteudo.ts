@@ -316,8 +316,8 @@ export const sobre = {
 
   habilidades: [
     ['Linguagens', 'Java, Python, HTML5, CSS3, JavaScript, TypeScript'],
+    ['Ferramentas', 'React, Tailwind, Vite, Node.js, Git/GitHub'],
     ['Suporte', 'Hardware, suporte N1, diagnóstico, redes básico'],
-    ['Ferramentas', 'Excel, Word e PowerPoint avançados, Git/GitHub'],
     ['Competências', 'Comunicação assertiva, equipe, autonomia, aprendizagem rápida, resiliência'],
   ],
 
