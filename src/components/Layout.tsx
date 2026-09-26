@@ -1,6 +1,5 @@
 /**
  * Moldura de todas as páginas: barra de leitura, botão Menu e a gaveta.
- * O nome no topo só entra nas páginas internas. A capa já tem o nome grande.
  */
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
@@ -12,9 +11,6 @@ export function Layout() {
   const menuRef = useRef<HTMLButtonElement>(null)
   const gavetaId = useId()
   const { pathname } = useLocation()
-
-  // Define que o nome só aparece se NÃO estiver na página inicial ('/')
-  const mostrarNome = pathname !== '/'
 
   // Fecha o menu ao trocar de página, para a gaveta não ficar aberta por cima do texto.
   useEffect(() => {
@@ -76,8 +72,9 @@ export function Layout() {
       </a>
       <div className="readbar" aria-hidden="true" />
 
+      {/* Cabeçalho exibido permanentemente em todas as páginas */}
       <header className="top">
-        <div className={mostrarNome ? 'top-in top-com-nome' : 'top-in'}>
+        <div className="top-in top-com-nome">
           <button
             ref={menuRef}
             type="button"
@@ -89,18 +86,14 @@ export function Layout() {
             Menu
           </button>
 
-          {mostrarNome ? (
-            <Link className="who" to="/">
-              <span className="who-name">
-                <strong>João Pedro</strong>
-                <br />
-                <strong>Campos Rocha</strong>
-              </span>
-              <span className="who-role">Desenvolvedor web júnior / estágio</span>
-            </Link>
-          ) : (
-            <span />
-          )}
+          <Link className="who" to="/">
+            <span className="who-name">
+              <strong>João Pedro</strong>
+              <br />
+              <strong>Campos Rocha</strong>
+            </span>
+            <span className="who-role">Desenvolvedor web júnior / estágio</span>
+          </Link>
           <span />
         </div>
       </header>
