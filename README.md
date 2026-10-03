@@ -50,8 +50,8 @@ Tech Stack: HTML5, CSS3, JavaScript.
 
 📧 E-mail: jprocha.tech@gmail.com
 
-💼 LinkedIn: Perfil no LinkedIn
+💼 LinkedIn: [Linkedln}(www.linkedin.com/in/joão-pedro-c-rocha-98ab7b3b5)
 
-🐙 GitHub: github.com/jpedro-ios-projects
+🐙 GitHub: [GitHub](github.com/jpedro-ios-projects}
 
-🌐 Portfólio Online: Acessar Portfólio na Vercel
+🌐 Portfólio Online: 
