@@ -52,6 +52,6 @@ Tech Stack: HTML5, CSS3, JavaScript.
 
 💼 LinkedIn: [João Pedro C. Rocha](www.linkedin.com/in/joão-pedro-c-rocha-98ab7b3b5)
 
-🐙 GitHub: [jpedro-io](https://github.com/jpedro-ios-projects]
+🐙 GitHub: [jpedro-io](https://github.com/jpedro-ios-projects)
 
 🌐 Portfólio Online: [Portfólio](https://portfolio-ivory-eta-p7jmkacusy.vercel.app)
