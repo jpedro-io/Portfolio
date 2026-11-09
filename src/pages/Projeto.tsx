@@ -1,6 +1,6 @@
 /**
  * Página de um projeto. O endereço (/oficina, /cybernode…) escolhe o texto.
- * No fim ficam dois botões: o site publicado e o repositório.
+ * No fim ficam os botões: o site publicado (e extras), e o repositório.
  * O repositório só vira link quando `repositorio` deixa de ser null em conteudo.ts.
  */
 import { Link, useParams } from 'react-router-dom'
@@ -37,6 +37,12 @@ export function Projeto() {
         <img src={projeto.imagem} alt={projeto.alt} />
       </figure>
 
+      {projeto.galeria?.map((foto) => (
+        <figure className="shot" key={foto.src}>
+          <img src={foto.src} alt={foto.alt} />
+        </figure>
+      ))}
+
       <div className="reading">
         {projeto.secoes.map((secao) => (
           <section key={secao.titulo}>
@@ -55,6 +61,17 @@ export function Projeto() {
         <a className="btn" href={projeto.link} target="_blank" rel="noopener noreferrer">
           Ver o projeto
         </a>
+        {projeto.links?.map((extra) => (
+          <a
+            className="btn"
+            key={extra.url}
+            href={extra.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {extra.rotulo}
+          </a>
+        ))}
         {projeto.repositorio ? (
           <a
             className="btn btn-repo"

@@ -37,6 +37,10 @@ export type Projeto = {
   secoes: { titulo: string; blocos: Bloco[] }[]
   /** Site publicado. Abre em outra aba. */
   link: string
+  /** Outros endereços do mesmo projeto (viram botões extras). Opcional. */
+  links?: { rotulo: string; url: string }[]
+  /** Fotos extras mostradas abaixo da principal. Opcional. */
+  galeria?: { src: string; alt: string }[]
   /**
    * Repositório. Deixe `null` enquanto o link não existir.
    * Quando tiver o endereço, troque null pela URL, por exemplo:
@@ -47,8 +51,173 @@ export type Projeto = {
 
 export const projetos: Projeto[] = [
   {
-    slug: 'transporte',
+    slug: 'gestaotech',
     numero: '01',
+    nome: 'Gestão Tech — Portal de Certificados',
+    resumo:
+      'Certificados das oficinas do IFBA emitidos e validados por QR Code, em Django e PostgreSQL, no ar.',
+    imagem: '/img/gestaotech.jpg',
+    alt: 'Tela do portal de certificados Gestão Tech, com a validação por QR Code',
+    linha: 'O certificado sai na hora, e qualquer pessoa confere se é verdadeiro.',
+    contexto: 'Projeto Gestão Tech, Bacharelado em Sistemas de Informação, IFBA Campus Vitória da Conquista.',
+    tags: 'Django 5 · PostgreSQL · Docker · GitHub Actions',
+    secoes: [
+      {
+        titulo: 'O projeto',
+        blocos: [
+          {
+            texto:
+              'O projeto Gestão Tech reúne as oficinas oferecidas pelo curso de Sistemas de Informação do IFBA, em Vitória da Conquista. No fim de cada oficina, alguém precisava emitir os certificados: abrir o modelo, trocar nome, CPF, carga horária e data, exportar e enviar. Um por um.',
+          },
+          {
+            texto:
+              'O portal faz isso sozinho. O participante informa nome, CPF e de qual oficina participou. O sistema localiza o registro e entrega o PDF pronto para impressão, com código de validação e QR Code. Não precisa de conta, senha ou instalação, e funciona no celular.',
+          },
+          {
+            texto:
+              'A outra metade do problema é a confiança. Quem recebe um certificado pode digitar o código — ou ler o QR — e ver na hora se ele é válido, cancelado ou inexistente. A conferência é pública, mas nunca mostra CPF nem a lista de participantes.',
+          },
+        ],
+      },
+      {
+        titulo: 'Como funciona',
+        blocos: [
+          {
+            destaque: 'PDF gerado na hora.',
+            texto:
+              ' O modelo em DOCX recebe as tags de nome, CPF, oficina, código, data e URL de validação, é convertido pelo LibreOffice e volta como uma página A4 em paisagem. O arquivo não fica guardado em lugar nenhum: é montado no momento do download.',
+          },
+          {
+            destaque: 'CPF que não fica no banco.',
+            texto:
+              ' O número completo não é gravado. Ficam só um hash SHA-256 com chave secreta do servidor, usado para localizar o certificado, e os seis dígitos do meio, para exibir ***.123.456-**. Quem precisa do CPF original não encontra nada no banco.',
+          },
+          {
+            destaque: 'Link de download assinado.',
+            texto:
+              ' O endereço que entrega o arquivo vale por dez minutos. Fora desse prazo, expira. Assim um link compartilhado por engano não vira porta aberta.',
+          },
+          {
+            destaque: 'Carga em lote, sem duplicar.',
+            texto:
+              ' Os participantes entram por CSV, e rodar a mesma planilha duas vezes atualiza o registro em vez de criar outro. Oficina ou pessoa nova aparece no site na hora, sem publicar versão nova do sistema.',
+          },
+        ],
+      },
+      {
+        titulo: 'Tecnologias',
+        blocos: [
+          {
+            texto:
+              'No servidor, Python com Django 5 e PostgreSQL, servido por Gunicorn atrás do WhiteNoise para os arquivos estáticos. O ambiente é declarado em Docker, com LibreOffice e as fontes do certificado instaladas na imagem. O deploy roda no Fly.io por GitHub Actions, com as migrações aplicadas a cada publicação.',
+          },
+          {
+            texto:
+              'O projeto tem rate limiting na busca, para ninguém varrer CPFs, e separação entre o que é público (validação) e o que é restrito (o admin do Django, onde a equipe cadastra oficinas e participações).',
+          },
+        ],
+      },
+    ],
+    link: 'https://gestao-tech.fly.dev/',
+    repositorio: 'https://github.com/jpedro-io/gestaotech',
+  },
+  {
+    slug: 'workspace-integrado',
+    numero: '02',
+    nome: 'Workspace Integrado — Inscrições e Materiais',
+    resumo:
+      'Formulário de inscrição com CPF único e banco de dados, mais o site de materiais da oficina, no ar.',
+    imagem: '/img/oficina-materiais.jpg',
+    alt: 'Site de materiais da oficina Workspace Integrado, com o card de divulgação e o menu Início, Blocos, Materiais e Avaliação',
+    linha: 'Duas páginas que fizeram uma oficina funcionar sem planilha no meio.',
+    contexto:
+      'Oficina Workspace Integrado, da disciplina Organização, Sistemas e Métodos — estudantes de Sistemas de Informação do IFBA para estudantes da UESB, em Vitória da Conquista.',
+    tags: 'TypeScript · PostgreSQL (Neon) · Serverless · HTML/CSS/JS',
+    secoes: [
+      {
+        titulo: 'O projeto',
+        blocos: [
+          {
+            texto:
+              'A oficina "Workspace Integrado: Organizando Projetos e Alinhando Negócios com o Notion" ensina, na prática, como documentar processos, montar quadro de tarefas e dividir o mesmo workspace. É trabalho da disciplina Organização, Sistemas e Métodos, feito por alunos de Sistemas de Informação do IFBA para alunos da UESB.',
+          },
+          {
+            texto:
+              'O que precisava ser resolvido era o operacional: receber as inscrições sem depender de planilha compartilhada, e entregar o material sem mandar anexo por e-mail. Virou um par de páginas — uma que coleta e guarda as inscrições, outra que reúne o conteúdo da oficina.',
+          },
+        ],
+      },
+      {
+        titulo: 'A inscrição',
+        blocos: [
+          {
+            destaque: 'CPF conferido de verdade.',
+            texto:
+              ' O navegador valida o formato e a API valida outra vez, com o cálculo dos dois dígitos verificadores. Sequências como 111.111.111-11 são recusadas. Validar só no cliente deixaria a porta aberta para qualquer requisição direta.',
+          },
+          {
+            destaque: 'Uma resposta por CPF.',
+            texto:
+              ' A restrição está no banco, não no JavaScript: coluna única e inserção com "on conflict do nothing". Se o CPF já existe, a resposta volta 409 e a pessoa lê que a inscrição já foi registrada, em vez de criar duplicata.',
+          },
+          {
+            destaque: 'Limite de tentativas sem guardar IP.',
+            texto:
+              ' Cada tentativa entra numa tabela de janela de um minuto, indexada por um HMAC-SHA256 do endereço — o IP em si não é gravado. Passando do limite, a API responde 429. Uma rotina diária na Vercel limpa as janelas antigas.',
+          },
+          {
+            destaque: 'Erro que não vaza o banco.',
+            texto:
+              ' Falha de validação tem mensagem própria; qualquer erro interno devolve texto genérico. Nenhum detalhe de SQL ou de conexão chega à tela — e nenhum dado do inscrito aparece na resposta.',
+          },
+        ],
+      },
+      {
+        titulo: 'Os materiais',
+        blocos: [
+          {
+            texto:
+              'Página única, estática, com a mesma identidade do formulário. Os dez blocos da oficina aparecem como cartões que abrem no próprio site, com o resumo escrito a partir do Notion: o objetivo do bloco, o que acontece na sala e o que fica de entregável. As páginas internas do Notion não são expostas.',
+          },
+          {
+            texto:
+              'Tem barra de progresso de leitura, cabeçalho que muda ao rolar, entrada em sequência dos blocos e fundo em camadas desfocadas. Tudo respeita "prefers-reduced-motion": quem pediu menos animação no sistema recebe a página parada, sem prejuízo de leitura.',
+          },
+          {
+            texto:
+              'Os materiais da prática guiada ficam para download na própria página, e a avaliação da oficina aponta para um formulário externo. Nenhum arquivo depende de link que expira.',
+          },
+        ],
+      },
+      {
+        titulo: 'Tecnologias',
+        blocos: [
+          {
+            texto:
+              'O site de materiais é HTML, CSS e JavaScript sem framework, com revelação por IntersectionObserver. O formulário é HTML e CSS com as rotas de API escritas em TypeScript, publicadas como funções serverless na Vercel, gravando em PostgreSQL no Neon pelo driver serverless.',
+          },
+          {
+            texto:
+              'As duas páginas saem com CSP restritiva, nosniff, Referrer-Policy e Permissions-Policy desligando câmera, microfone e geolocalização — cabeçalhos declarados no vercel.json, não em configuração de painel.',
+          },
+        ],
+      },
+    ],
+    link: 'https://materiaisosm.vercel.app/',
+    links: [
+      { rotulo: 'Formulário de inscrição', url: 'https://forms-oficina.vercel.app/' },
+    ],
+    repositorio: 'https://github.com/jpedro-io/MateriaisOsm',
+    galeria: [
+      {
+        src: '/img/oficina-form.jpg',
+        alt: 'Formulário de inscrição da oficina Workspace Integrado, com os campos de nome, e-mail, CPF e celular',
+      },
+    ],
+  },
+  {
+    slug: 'transporte',
+    numero: '03',
     nome: 'Transporte Universitário - Divisa Alegre (MG)',
     resumo:
       'Portal da comissão de transporte para Vitória da Conquista. Clima, regras e o guia das universidades.',
@@ -115,7 +284,7 @@ export const projetos: Projeto[] = [
   },
   {
     slug: 'oficina',
-    numero: '02',
+    numero: '04',
     nome: 'Oficina Luciano - Sistema de Gestão',
     resumo:
       'Gestão da oficina, do recebimento do veículo à entrega. Trabalho de Administração no IFBA.',
@@ -173,7 +342,7 @@ export const projetos: Projeto[] = [
   },
   {
     slug: 'cybernode',
-    numero: '03',
+    numero: '05',
     nome: 'CyberNode: Invasão de Rede',
     resumo: 'Jogo de invasão de rede. O jogador avança pelos nós e aplica Teoria dos Grafos.',
     imagem: '/img/cybernode.jpg',
@@ -230,7 +399,7 @@ export const projetos: Projeto[] = [
   },
   {
     slug: 'newtech',
-    numero: '04',
+    numero: '06',
     nome: 'Site New Tech',
     resumo: 'Site da empresa para apresentar as soluções e as tecnologias da New Tech.',
     imagem: '/img/newtech.jpg',
@@ -315,8 +484,10 @@ export const sobre = {
   ],
 
   habilidades: [
-    ['Linguagens', 'Java, Python, HTML5, CSS3, JavaScript, TypeScript'],
-    ['Ferramentas', 'React, Tailwind, Vite, Node.js, Git/GitHub'],
+    ['Linguagens', 'Python, Java, JavaScript, TypeScript, SQL, HTML5, CSS3'],
+    ['Back-end', 'Django 5, Node.js (HTTP nativo), PostgreSQL, APIs REST, POO, JavaFX'],
+    ['Front-end', 'React, Tailwind, Vite, design responsivo, acessibilidade'],
+    ['Infra e versão', 'Docker, GitHub Actions (CI/CD), Gunicorn, Vercel, Git/GitHub, Linux'],
     ['Suporte', 'Hardware, suporte N1, diagnóstico, redes básico'],
     ['Competências', 'Comunicação assertiva, equipe, autonomia, aprendizagem rápida, resiliência'],
   ],
